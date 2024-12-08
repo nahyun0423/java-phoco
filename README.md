@@ -19,3 +19,6 @@ https://docs.google.com/document/d/1Wy_-pVaCDOAZrB4NX68oIJ3QZ1JVITwDqOaZ5GJRkNs/
 - 확장 기능
                           i.         사용자 간 채팅.
                          ii.          쇼핑몰 링크 연결 (마케팅 협업)
+
+### ERD
+![image](https://github.com/user-attachments/assets/65b8921f-9da1-4d4e-9451-7455450b7234)

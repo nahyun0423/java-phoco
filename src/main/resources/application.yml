@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/phoco
+    username: root
+    password: nahyun
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+application:
+  name: phoco
+file:
+  upload-dir: C:/nahyun/2024_grade4/2024_mentoring/phocoImage
+

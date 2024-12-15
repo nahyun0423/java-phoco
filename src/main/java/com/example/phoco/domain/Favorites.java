@@ -21,3 +21,5 @@ public class Favorites {
     @JoinColumn(name = "user_id")
     private User user;
 }
+
+//

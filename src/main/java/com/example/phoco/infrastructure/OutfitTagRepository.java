@@ -1,9 +1,9 @@
 package com.example.phoco.infrastructure;
 
-import com.example.phoco.domain.Outfit;
+import com.example.phoco.domain.OutfitTag;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface OutfitRepository extends JpaRepository<Outfit, Long> {
+public interface OutfitTagRepository extends JpaRepository<OutfitTag, Long> {
 }

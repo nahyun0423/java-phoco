@@ -1,7 +1,10 @@
 package com.example.phoco.presentation;
 
-import com.example.phoco.application.OutfitService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.phoco.application.OutfitTagService;
+import com.example.phoco.domain.Outfit;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -9,17 +12,25 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 
 @RestController
-@RequestMapping("/outfits")
+@RequestMapping("/outfit")
+@RequiredArgsConstructor
 public class OutfitController {
 
-    @Autowired
-    private OutfitService outfitService;
+    private final OutfitTagService outfitTagService;
 
     @PostMapping("/upload")
-    public String uploadOutfit(@RequestParam("userId") Long userId, @RequestParam("file") MultipartFile file) throws IOException {
-            outfitService.uploadOutfit(userId, file);
-            return "파일 업로드 성공";
+    public ResponseEntity<Outfit> uploadOutfit(
+            @RequestParam("file") MultipartFile file,
+            @RequestParam Long userId,
+            @RequestParam List<String> tagNames) {
+        try {
+            Outfit outfit = outfitTagService.uploadOutfitWithTags(file, userId, tagNames);
+            return ResponseEntity.ok(outfit);
+        } catch (IOException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 }
